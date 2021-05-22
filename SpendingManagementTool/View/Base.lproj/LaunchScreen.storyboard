@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="ipad10_9rounded" orientation="landscape" layout="fullscreen" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="KSf-pJ-zgA">
+            <objects>
+                <viewController id="QzU-n0-xr2" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eQC-wG-hlG">
+                        <rect key="frame" x="0.0" y="0.0" width="1180" height="820"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vka-o8-IJS">
+                                <rect key="frame" x="133" y="50" width="914" height="700"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="9oE-I6-Fx9">
+                                        <rect key="frame" x="50" y="50" width="814" height="512"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Developed by Fazal" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qDT-sg-Mz4">
+                                        <rect key="frame" x="0.0" y="690" width="914" height="19.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spending Management Tool" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TTZ-i3-K3M">
+                                        <rect key="frame" x="20" y="627" width="874" height="53"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="44"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="9oE-I6-Fx9" secondAttribute="trailing" constant="50" id="DrF-e7-b0h"/>
+                                    <constraint firstAttribute="trailing" secondItem="qDT-sg-Mz4" secondAttribute="trailing" id="NVm-qn-q54"/>
+                                    <constraint firstItem="qDT-sg-Mz4" firstAttribute="top" secondItem="TTZ-i3-K3M" secondAttribute="bottom" constant="10" id="PvB-Si-wot"/>
+                                    <constraint firstItem="9oE-I6-Fx9" firstAttribute="top" secondItem="Vka-o8-IJS" secondAttribute="top" constant="50" id="XHg-0o-kzs"/>
+                                    <constraint firstItem="9oE-I6-Fx9" firstAttribute="leading" secondItem="Vka-o8-IJS" secondAttribute="leading" constant="50" id="fxR-kD-Ywh"/>
+                                    <constraint firstItem="TTZ-i3-K3M" firstAttribute="top" secondItem="9oE-I6-Fx9" secondAttribute="bottom" constant="65" id="kxd-rf-nwo"/>
+                                    <constraint firstItem="qDT-sg-Mz4" firstAttribute="leading" secondItem="Vka-o8-IJS" secondAttribute="leading" id="w0c-01-8IN"/>
+                                    <constraint firstAttribute="trailing" secondItem="TTZ-i3-K3M" secondAttribute="trailing" constant="20" id="wLC-gF-lec"/>
+                                    <constraint firstItem="TTZ-i3-K3M" firstAttribute="leading" secondItem="Vka-o8-IJS" secondAttribute="leading" constant="20" id="ynt-jv-nhe"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="lqJ-Ds-7QT"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="lqJ-Ds-7QT" firstAttribute="trailing" secondItem="Vka-o8-IJS" secondAttribute="trailing" constant="133" id="8IZ-fG-0ec"/>
+                            <constraint firstItem="Vka-o8-IJS" firstAttribute="top" secondItem="lqJ-Ds-7QT" secondAttribute="top" constant="50" id="EdI-Mq-Ai7"/>
+                            <constraint firstItem="lqJ-Ds-7QT" firstAttribute="bottom" secondItem="Vka-o8-IJS" secondAttribute="bottom" constant="50" id="G7y-6J-HWb"/>
+                            <constraint firstItem="Vka-o8-IJS" firstAttribute="leading" secondItem="lqJ-Ds-7QT" secondAttribute="leading" constant="133" id="Ywz-yk-eca"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9Fr-AR-k4L" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="52.708638360175691" y="374.4140625"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="logo" width="512" height="512"/>
+    </resources>
+</document>
