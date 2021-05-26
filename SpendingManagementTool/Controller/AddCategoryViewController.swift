@@ -8,12 +8,18 @@
 import UIKit
 
 class AddCategoryViewController: UIViewController {
-
-   
+    
+    
+    @IBOutlet weak var labelCategory: UILabel!
     @IBOutlet weak var textFieldCategoryName: UITextField!
     @IBOutlet weak var textFieldCategoryBudget: UITextField!
     @IBOutlet weak var textFieldCategoryNotes: UITextField!
     @IBOutlet weak var ColorPicker: UISegmentedControl!
+    
+    
+    var categoryPlaceholder: Category?
+    var isEditView:Bool?
+    
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
@@ -24,14 +30,25 @@ class AddCategoryViewController: UIViewController {
         )
         namealert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
         self.present(namealert,animated: true)
-
+        
         
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.ColorPicker.selectedSegmentIndex = 0
-
+        if (isEditView!) {
+            if let category = categoryPlaceholder {
+                labelCategory.text = "Edit " + category.name! + " Category"
+                textFieldCategoryName.text = category.name
+                textFieldCategoryBudget.text = "\(category.monthlybudget)"
+                textFieldCategoryNotes.text = category.notes
+                ColorPicker.selectedSegmentIndex =  Int(category.colour)
+            }
+            
+            textFieldCategoryName.becomeFirstResponder()
+        }
+        
         // Do any additional setup after loading the view.
     }
     
@@ -46,21 +63,17 @@ class AddCategoryViewController: UIViewController {
         
         if (self.textFieldCategoryName.text == "" || self.textFieldCategoryBudget.text == ""){
             alert()
-            
+        }else {
+            var newCategory:Category
+            if(self.isEditView ?? false){
+                newCategory = self.categoryPlaceholder!
+            }else{
+                newCategory = Category(context: context)
             }
-        
             
-                   
-        else {
-            let newCategory = Category(context: context)
-
             newCategory.name = self.textFieldCategoryName.text
-            
-    
             newCategory.monthlybudget = Double(self.textFieldCategoryBudget.text!)!
-            
             newCategory.colour = Int16(ColorPicker.selectedSegmentIndex)
-            
             newCategory.notes = self.textFieldCategoryNotes.text
             (UIApplication.shared.delegate as! AppDelegate).saveContext()
             closePopUp()
@@ -69,13 +82,13 @@ class AddCategoryViewController: UIViewController {
         
     }
     
-     // MARK: - Navigation
-//
-//    // In a storyboard-based application, you will often want to do a little preparation before navigation
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        // Get the new view controller using segue.destination.
-//        // Pass the selected object to the new view controller.
-//    }
-//
-
+    // MARK: - Navigation
+    //
+    //    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    //        // Get the new view controller using segue.destination.
+    //        // Pass the selected object to the new view controller.
+    //    }
+    //
+    
 }

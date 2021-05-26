@@ -345,6 +345,7 @@
                     <size key="freeformSize" width="375" height="375"/>
                     <connections>
                         <outlet property="ColorPicker" destination="VqM-lm-VdB" id="2Bi-dq-7iR"/>
+                        <outlet property="labelCategory" destination="gnL-ee-doX" id="hv7-gh-DYQ"/>
                         <outlet property="textFieldCategoryBudget" destination="yrd-7L-0V5" id="4Cy-0c-xe6"/>
                         <outlet property="textFieldCategoryName" destination="1zH-Fy-Wcy" id="f5f-lt-Bae"/>
                         <outlet property="textFieldCategoryNotes" destination="1LM-9a-sqB" id="oTJ-Sd-2O8"/>
@@ -540,7 +541,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Tll-UG-LXB"/>
+        <segue reference="6S0-TO-JiA"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrow.up.arrow.down" catalog="system" width="128" height="98"/>

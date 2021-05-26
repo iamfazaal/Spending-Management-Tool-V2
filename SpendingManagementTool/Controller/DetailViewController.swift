@@ -12,6 +12,10 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     @IBOutlet weak var tableView: UITableView!
     
+    var addExpenseViewController: AddExpenseViewController? = nil
+    var isEditView:Bool? = false
+
+    
     let cellSelColour:UIColor = UIColor (red: 200/255, green: 214/255, blue:229/255, alpha: 0.8)
 
     
@@ -161,20 +165,45 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     // MARK: Table Editing
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            let context = fetchedResultsController.managedObjectContext
-            context.delete(fetchedResultsController.object(at: indexPath))
-                
-            do {
-                try context.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nserror = error as NSError
-                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-            }
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let edit = editAction(at: indexPath)
+        let delete = deleteAction(at: indexPath)
+        return UISwipeActionsConfiguration(actions: [edit,delete])
+    }
+    
+    func editAction (at indexPath: IndexPath) -> UIContextualAction {
+        let action = UIContextualAction(style: .normal, title: "Edit") { (action, view, completion) in
+            self.isEditView = true
+            self.expense = self.fetchedResultsController.object(at: indexPath)
+            self.performSegue(withIdentifier: "addExpense", sender: self)
+            self.isEditView = false
+            completion(true)
         }
+        action.image = UIImage(named: "edit")
+        action.image = action.image?.withTintColor(.white)
+        action.backgroundColor = .systemBlue
+        return action
+    }
+    
+    func deleteAction (at indexPath: IndexPath) -> UIContextualAction {
+        let action = UIContextualAction(style: .normal, title: "Delete") { (action, view, completion) in
+            let context = self.fetchedResultsController.managedObjectContext
+            context.delete(self.fetchedResultsController.object(at: indexPath))
+            
+                        do {
+                            try context.save()
+                        } catch {
+                            // Replace this implementation with code to handle the error appropriately.
+                            // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                            let nserror = error as NSError
+                            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+                        }
+            completion(true)
+        }
+        action.image = UIImage(named: "delete")
+        action.image = action.image?.withTintColor(.white)
+        action.backgroundColor = .systemRed
+        return action
     }
     
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
@@ -250,6 +279,12 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 break
             }
             
+        }
+        if segue.identifier == "addExpense" {
+            let controller = segue.destination as! AddExpenseViewController
+            controller.expense = expense
+            controller.isEditView = self.isEditView
+             addExpenseViewController = controller
         }
     }
     
