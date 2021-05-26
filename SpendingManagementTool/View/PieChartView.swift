@@ -157,8 +157,6 @@ class PieChartView : UIView {
     isOpaque = false
   }
 
-//
-
   private func forEachSegment(
     _ body: (LabelledSegment, _ startAngle: CGFloat,
              _ endAngle: CGFloat) -> Void

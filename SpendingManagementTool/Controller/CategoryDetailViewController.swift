@@ -140,14 +140,5 @@ class CategoryDetailViewController: UIViewController, NSFetchedResultsController
     }
     
     
-    // 1. Fetch total budget from category
-    // 2. Fetch all expenses
-    // 3. Add expenses
-    // 4. remaining: create segment
-    // 4a. spent: create segments per expense
-    // 4b. segment per expense
-    
-    
-    
     
 }
